@@ -12,13 +12,17 @@ function getCountries() {
         console.log(countrysArray);
         createLyout(countrysArray);
 
-    });
+    })
+    .catch(err => {
+      alert('Fetch error', err)
+    })
 }
 
 function createLyout(countrysArray) {
     let htmlElements = `<div><table border=1 margin="0 auto">`
+    let localdb = countrysArray;
     if (document.getElementById("searchcountry").value !== "") {
-       countrysArray =countrysArray.filter(i => i.name === document.getElementById("searchcountry").value)
+       localdb = localdb.filter(i => i.name.toLowerCase().includes(document.getElementById("searchcountry").value))
     }
 
     var countries = document.getElementById("countries");
@@ -29,6 +33,7 @@ function createLyout(countrysArray) {
     }
       // console.log(sum)
 
+    // for the numbers
     let numCount = 0;
     // sorting
     if (window.location.search.substr(1) === "sort=asc") {
@@ -37,7 +42,7 @@ function createLyout(countrysArray) {
         countrysArray.sort((a, b) => b.population - a.population)
     }
 
-    countrysArray.forEach(country => {
+    localdb.forEach(country => {
         numCount++;
         htmlElements += `<tr><td>${numCount}</td>
       <td width= 20%>${country.name} </td>
@@ -53,8 +58,8 @@ function createLyout(countrysArray) {
   } 
 
 function searchButton() {
-    let button = document.getElementById('search');
-    button.addEventListener('click', (e) => {
+    let button = document.getElementById('searchcountry');
+    button.addEventListener('keyup', (e) => {
     e.preventDefault();
     createLyout(countrysArray) 
 
