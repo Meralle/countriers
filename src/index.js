@@ -20,6 +20,7 @@ function getCountries() {
 
 function createLyout(countrysArray) {
     let htmlElements = `<div><table border=1 margin="0 auto">`
+    // let db = countrysArray.map((c, i) => c.id = i)
     let localdb = countrysArray;
     if (document.getElementById("searchcountry").value !== "") {
        localdb = localdb.filter(i => i.name.toLowerCase().includes(document.getElementById("searchcountry").value))
@@ -49,7 +50,8 @@ function createLyout(countrysArray) {
       <td width= 20%> <img src = " ${country.flag} " width= 30%"" >  </td>
       <td>${country.capital}</td>
       <td>${country.population}</td>
-      <td>${(country.population / sum *100).toFixed(2)}%</td></tr>`        
+      <td>${(country.population / sum *100).toFixed(2)}%</td></tr>` 
+      // <td>${(country.population / world population)}       
        
     });
 
@@ -66,6 +68,14 @@ function searchButton() {
   });
 
 }
-getCountries();
-searchButton() 
+  getCountries();
+  searchButton();
 
+
+// this part with search button
+// searching() {  
+//   var search = document.getElementById("search") 
+//      search.addEventListener('keyup', (e) => {
+//      e.preventDefault()
+//      this.printCountries()
+//    })
