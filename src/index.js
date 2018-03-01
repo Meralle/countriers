@@ -45,19 +45,61 @@ function createLyout(countrysArray) {
 
     localdb.forEach(country => {
         numCount++;
-        htmlElements += `<tr><td>${numCount}</td>
+        htmlElements += `<tr>
+      <td>${numCount}</td>
       <td width= 20%>${country.name} </td>
-      <td width= 20%> <img src = " ${country.flag} " width= 30%"" >  </td>
+      <td data-id = "${country.latlng}" width= 20%><img src ="${country.flag}" width= 30%"" >  </td>
       <td>${country.capital}</td>
       <td>${country.population}</td>
       <td>${(country.population / sum *100).toFixed(2)}%</td></tr>` 
-      // <td>${(country.population / world population)}       
+           
        
     });
 
      countries.innerHTML = htmlElements
            
   } 
+
+
+
+  function initMap(lat,lng,zoom){
+    const coord = {
+      lat:lat,
+      lng:lng,
+    }
+    const map = new google.maps.Map(document.getElementById('map'), 
+      {zoom: zoom, center:coord})
+    const marker = new google.maps.Marker({
+      position:coord, map:map});
+
+    const panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('pano'), {
+        position :coord,
+        pov: {
+          heading:34,
+          pitch:10
+        }
+      });
+    map.setStreetView(panorama);
+      
+  }
+
+
+  document.getElementById('countries').addEventListener('click', function(e){
+    // console.log(e.target);
+    // debugger
+    // const {target} = e;
+    // es6 object destructuring
+    // const target = e.target
+    // const {target} = e;
+    const coord = e.target.getAttribute('data-id');
+    // console.log(coord)
+    const final = coord.split(',');
+    // console.log(final)
+    initMap(Number(final[0]),Number(final[1]), 6);
+    $('.bd-example-modal-lg').modal();
+  });
+
 
 function searchButton() {
     let button = document.getElementById('searchcountry');
@@ -70,7 +112,7 @@ function searchButton() {
 }
   getCountries();
   searchButton();
-
+  
 
 // this part with search button
 // searching() {  

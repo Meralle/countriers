@@ -11,3 +11,23 @@
 .btn{
 	background-color: orange;
 }
+
+#map{
+	width:800px;
+	height:300px;
+	
+}
+#pano{
+	width:800px;
+	height:300px;
+}
+
+.mapContainer{
+	display: flex;
+	justify-content: center;
+	margin-top:20px;
+}
+/*.wrapper{
+	display:flex;
+	justify-content: space-around;
+}*/
