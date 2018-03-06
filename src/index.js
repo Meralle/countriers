@@ -51,14 +51,11 @@ function createLyout(countrysArray) {
       <td>${country.capital}</td>
       <td>${country.population}</td>
       <td>${(country.population / sum *100).toFixed(2)}%</td></tr>` 
-           
-       
+    
     });
 
-     countries.innerHTML = htmlElements
-           
+     countries.innerHTML = htmlElements        
   } 
-
 
 
   function initMap(lat,lng,zoom){
@@ -83,10 +80,8 @@ function createLyout(countrysArray) {
       
   }
 
-
   document.getElementById('countries').addEventListener('click', function(e){
     // console.log(e.target);
-    // debugger
     // const {target} = e;
     // es6 object destructuring
     // const target = e.target
