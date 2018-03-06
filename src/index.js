@@ -1,4 +1,3 @@
-
 countrysArray = [];
 function getCountries() {
     fetch('https://restcountries.eu/rest/v2/all')
@@ -48,7 +47,7 @@ function createLyout(countrysArray) {
         htmlElements += `<tr>
       <td>${numCount}</td>
       <td width= 20%>${country.name} </td>
-      <td data-id = "${country.latlng}" width= 20%><img src ="${country.flag}" width= 30%"" >  </td>
+      <td width= 20%><img data-id = "${country.latlng}" src ="${country.flag}" width= 30%"" >  </td>
       <td>${country.capital}</td>
       <td>${country.population}</td>
       <td>${(country.population / sum *100).toFixed(2)}%</td></tr>` 
@@ -112,5 +111,3 @@ function searchButton() {
 }
   getCountries();
   searchButton();
-  
-
