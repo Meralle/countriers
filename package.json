@@ -7,11 +7,14 @@
     "start": "./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack --watch",
     "clean": "rm -rf ./dist"
+
+
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1",
     "popper.js": "^1.12.9",
     "webpack-cli": "^2.0.10"
   },
